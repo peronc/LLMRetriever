@@ -1,7 +1,7 @@
 from langchain_openai.chat_models.azure import AzureChatOpenAI
 from concurrent.futures import ThreadPoolExecutor
 
-class llm_retrieve:
+class llm_retriever:
     @staticmethod
     # Function to analyze each chunk with the LLM and query relevance
     def analyze_chunk_with_llm(llm: AzureChatOpenAI, chunk: str, query: str):    
@@ -48,7 +48,7 @@ class llm_retrieve:
             thread_relevant_chunks = []
             
             for chunk in database[start:end]:
-                is_relevant, useful_chunk = llm_retrieve.analyze_chunk_with_llm(llm, chunk, question)
+                is_relevant, useful_chunk = llm_retriever.analyze_chunk_with_llm(llm, chunk, question)
                 if is_relevant:
                     thread_relevant_chunks.append(useful_chunk)
                     
